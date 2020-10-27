@@ -2,9 +2,11 @@
 
 Docker image that runs `pg_dump` individually for every database on a given server and saves incremental encrypted backups via [restic].
 
+Forked from https://github.com/ixc/restic-pg-dump-docker
+
 By default:
 
-- Uses S3 as restic repository backend.
+- Uses ~~S3~~ Backblaze B2 as restic repository backend.
 - Runs every hour via cron job.
 - Keeps 24 latest, 7 daily, 4 weekly, and 12 monthly snapshots.
 - Prunes old snapshots every week.
@@ -18,16 +20,16 @@ Run:
 
     $ docker run \
     -d \
-    -e AWS_ACCESS_KEY_ID='...' \
-    -e AWS_SECRET_ACCESS_KEY='...' \
+    -e B2_ACCOUNT_ID='...' \
+    -e B2_ACCOUNT_KEY='...' \
     -e PGHOST='...' \
     -e PGPASSWORD='...' \
     -e PGUSER='...' \
     -e RESTIC_PASSWORD='...' \
-    -e RESTIC_REPOSITORY='s3:s3.amazonaws.com/...' \
+    -e RESTIC_REPOSITORY='b2:bucketname:path/to/repo' \
     --name restic-pg-dump \
     --restart always \
-    interaction/restic-pg-dump
+    dockershepherd/restic-pg-dump-b2
 
 You can also pass the following environment variables to override the defaults:
 

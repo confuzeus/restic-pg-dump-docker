@@ -1,10 +1,10 @@
-version: '3'
+version: "3"
 
 services:
   restic-pg-dump:
     environment:
-      AWS_ACCESS_KEY_ID:
-      AWS_SECRET_ACCESS_KEY:
+      B2_ACCOUNT_ID:
+      B2_ACCOUNT_KEY:
       # BACKUP_SCHEDULE: '0 * * * *'  # Hourly
       # PRUNE_SCHEDULE: '0 14 * * 0'  # Sunday midnight, AEST. Use '' to disable.
       PGHOST:
@@ -17,5 +17,5 @@ services:
       # RESTIC_KEEP_MONTHLY: 12
       RESTIC_PASSWORD:
       RESTIC_REPOSITORY:
-    image: interaction/restic-pg-dump
+    image: dockershepherd/restic-pg-dump-b2
     restart: always
