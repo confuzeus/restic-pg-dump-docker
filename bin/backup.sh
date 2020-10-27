@@ -58,7 +58,7 @@ for i in {1..5}; do
 		sleep 10
 	done
 
-	echo 'Finished sending database dumps to S3'
+	echo 'Finished sending database dumps to B2'
 
 	rm -rf "/pg_dump"
 done
