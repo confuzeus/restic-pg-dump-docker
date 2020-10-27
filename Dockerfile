@@ -1,4 +1,4 @@
-FROM restic/restic
+FROM restic/restic:latest
 
 RUN apk update \
     && apk upgrade \
