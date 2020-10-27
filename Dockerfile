@@ -1,13 +1,13 @@
-FROM restic/restic:0.9.6
+FROM restic/restic
 
 RUN apk update \
     && apk upgrade \
     && apk add \
-        bash \
-        postgresql-client \
-        tini \
+    bash \
+    postgresql-client \
+    tini \
     && apk add --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
-        util-linux \
+    util-linux \
     && rm -rf /var/cache/apk/*
 
 ENV DOCKERIZE_VERSION=0.5.0
